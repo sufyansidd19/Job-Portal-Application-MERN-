@@ -5,9 +5,9 @@ export const registerCompany = async (req, res) => {
         const { companyName } = req.body;
         if (!companyName) {
             return res.status(400).json({
-                message: "Company name is required",
+                message: "Company name is required.",
                 success: false
-            })
+            });
         }
         let company = await Company.findOne({ name: companyName });
         if (company) {
@@ -20,8 +20,9 @@ export const registerCompany = async (req, res) => {
             name: companyName,
             userId: req.id
         });
+
         return res.status(201).json({
-            message: "Company registered successfully",
+            message: "Company registered successfully.",
             company,
             success: true
         })
@@ -33,13 +34,17 @@ export const registerCompany = async (req, res) => {
 export const getCompany = async (req, res) => {
     try {
         const userId = req.id; // logged in user id 
-        const companies = await company.find(userId);
+        const companies = await Company.find(userId);
         if (!companies) {
             return res.status(404).json({
                 message: "Companies not found.",
                 success: false
             })
         }
+        return res.status(200).json({
+            companies,
+            success:true
+        })
     } catch (error) {
         console.log(error);
     }
