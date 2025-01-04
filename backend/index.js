@@ -35,7 +35,7 @@ const PORT=process.env.PORT || 3000;
 
 app.use("/api/v1/user",userRoute);
 // http://localhost:8000/api/v1/user/register
-app.use("/api/v1/company",companyRoute);
+app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job",jobRoute);
 
 

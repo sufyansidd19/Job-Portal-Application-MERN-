@@ -14,8 +14,8 @@ export const registerCompany = async (req, res) => {
             return res.status(400).json({
                 message: "You can't register same company.",
                 success: false
-            })
-        };
+            });
+        }
         company = await Company.create({
             name: companyName,
             userId: req.id
@@ -28,8 +28,13 @@ export const registerCompany = async (req, res) => {
         })
     } catch (error) {
         console.log(error);
+        return res.status(500).json({
+            message:"An error occured while registering the company.",
+            success:false,
+            error:error.message,
+        });
     }
-}
+};
 
 export const getCompany = async (req, res) => {
     try {
