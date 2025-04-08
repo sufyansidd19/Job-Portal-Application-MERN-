@@ -41,9 +41,8 @@ const Signup = () => {
     try {
       const res = await axios.post(`${USER_API_ENDPOINT}/register`, formData, {
         headers: {
-          "Content-Type": "multipart/form-data"
-        },
-        withCredentials: true,
+          "Content-Type": "multipart/form-data"},
+           withCredentials: true,
       });
       if (res.data.success) {
         navigate("/login")
@@ -51,7 +50,7 @@ const Signup = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || error.message || "Something went wrong")
     }
   }
 
