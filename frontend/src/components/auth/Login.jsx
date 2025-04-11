@@ -6,6 +6,8 @@ import { RadioGroup } from '../ui/radio-group'
 import { Button } from '../ui/button'
 import { Link } from 'react-router-dom'
 import { toast } from 'sonner'
+import axios from 'axios'
+import { USER_API_END_POINT } from '../utils/constant'
 
 const Login = () => {
     const [input, setinput] = useState({
@@ -20,10 +22,8 @@ const Login = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post(`${USER_API_ENDPOINT}/login`, input, {
-                headers: {
-                    "Content-Type": "application/json"
-                },
+            const res = await axios.post("http://localhost:8000/api/v1/user/login", input, {
+                headers: {"Content-Type": "application/json"},
                 withCredentials: true,
             });
             if (res.data.success) {
@@ -32,8 +32,7 @@ const Login = () => {
             }
         } catch (error) {
             console.log(error);
-            toast.error(error.response.data.message);
-
+            // toast.error(error.response.data.message);
         }
     }
 
@@ -95,4 +94,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Login;
