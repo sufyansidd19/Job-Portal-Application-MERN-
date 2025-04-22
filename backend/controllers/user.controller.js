@@ -109,7 +109,6 @@ export const updateProfile = async (req, res) => {
         // cloudinary ayega idhar
 
 
-
         let skillsArray;
         if(skills){
             skillsArray = skills.split(",");
