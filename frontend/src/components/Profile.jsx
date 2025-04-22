@@ -26,7 +26,7 @@ const Profile = () => {
                             <p>Add your bio here ,Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quod cumque facere labore esse unde dignissimos ipsa expedita est architecto nam nisi, dolorem, perferendis inventore fugit ad placeat reiciendis doloribus?</p>
                         </div>
                     </div>
-                    <Button className='text-right' variant='outline' onClick={()=>setOpen(true)}><Pen /></Button>
+                    <Button className='text-right cursor-pointer' variant='outline' onClick={()=>setOpen(true)}><Pen/></Button>
                 </div>
                 <div className='my-5'>
                     <div className='flex items-center gap-3 my-2'>
