@@ -57,7 +57,7 @@ const Profile = () => {
                 <div className="grid w-full max-w-sm items-center gap-1.5">
                     <Label className='text-md font-bold'>Resume</Label>
                     {
-                        isResume ? <a target='blank' className='text-blue-500 w-full hover:underline cursor-pointer' href='https://youtube.com'>Sufyan Siddiqui</a>
+                        isResume ? <a target='blank' className='text-blue-500 w-full hover:underline cursor-pointer' href={user?.profile?.resume}>{user?.profile?.resumeOriginalName}</a>
                             : <span>NA</span>
                     }
                 </div>
