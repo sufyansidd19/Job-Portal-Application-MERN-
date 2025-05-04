@@ -6,13 +6,27 @@ import { Input } from '../ui/input'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { COMPANY_API_END_POINT } from '../utils/constant'
+import { useDispatch } from 'react-redux'
+import { setSingleCompany } from '@/redux/companySlice'
 
 const CompanyCreate = () => {
     const navigate=useNavigate();
     const [companyName,setCompanyName]=useState();
+    const dispatch=useDispatch();
     const registerNewCompany=async()=>{
         try {
-            const res = await axios.get(`${COMPANY_API_END_POINT}/register`,{})
+            const res = await axios.get(`${COMPANY_API_END_POINT}/register`,{companyName},{
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                withCredentials:true
+        });
+        if(res?.data?.success){
+            dispatch(setSingleCompany(res.data.copany));
+            toast.success(res.data.message);
+            const companyId=res?.data?.company?._id;
+            navigate(`/admin/companies/${companyId}`);
+        }
         } catch (error) {
             console.log(error);
         }
