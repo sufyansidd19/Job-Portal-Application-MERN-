@@ -1,11 +1,18 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import authSlice from "./authSlice";
-import jobSlice from "./jobSlice"
-import companySlice from "./companySlice"
+import jobSlice from "./jobSlice";
 import {
-    persistStore,persistReducer,FLUSH,REHYDRATE,PAUSE,
-    PERSIST,PURGE,REGISTER } from 'redux-persist'
+    persistStore,
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
+} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import companySlice from "./companySlice";
 
 const persistConfig={
     key:'root',
@@ -14,21 +21,22 @@ const persistConfig={
 }
 
 
-const rootReducer=combineReducers({
+const rootReducer = combineReducers({
     auth:authSlice,
     job:jobSlice,
     company:companySlice
 })
-const persistedReducer = persistReducer(persistConfig,rootReducer)
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 
 const store = configureStore({
-    reducer:persistedReducer,
-    middleware:(getDefaultMiddleware)=>
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
-            serializableCheck:{
-                ignoreActions:[FLUSH,REHYDRATE,PAUSE,PERSIST,REGISTER]
-            }
-        })
-})
-export default store ;
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            },
+        }),
+});
+export default store;
