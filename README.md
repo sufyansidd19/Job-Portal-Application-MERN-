@@ -34,17 +34,6 @@ cd backend
 npm install
 ```
 
-#### Environment Variables
-Create a `.env` file in the `backend` directory with the following:
-```
-PORT=8000
-MONGODB_URI=<your-mongodb-uri>
-SECRET_KEY=<your-jwt-secret>
-CLOUD_NAME=<your-cloudinary-cloud-name>
-API_KEY=<your-cloudinary-api-key>
-API_SECRET=<your-cloudinary-api-secret>
-```
-
 #### Start Backend
 ```bash
 npm run dev
