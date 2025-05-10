@@ -24,7 +24,7 @@ A full-stack job portal application where users can find and create jobs. Built 
 
 ### 1. Clone the repository
 ```bash
-git clone [https://github.com/sufyansidd19/Job-Portal-Application-MERN-.git](https://github.com/sufyansidd19/Job-Portal-Application-MERN-.git)
+git clone https://github.com/sufyansidd19/Job-Portal-Application-MERN-.git
 cd Job-Portal-Application-MERN-
 ```
 
