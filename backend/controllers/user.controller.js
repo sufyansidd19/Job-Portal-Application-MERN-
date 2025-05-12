@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import getDataUri from "../utils/datauri.js";
 import cloudinary from "../utils/cloudinary.js";
+import { sendWelcomeEmail } from "../utils/email.js";
 
 export const register = async (req, res) => {
     try {
@@ -14,9 +15,13 @@ export const register = async (req, res) => {
                 success: false
             });
         };
-        const file = req.file;
-        const fileUri = getDataUri(file);
-        const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+
+        let profilePhoto = "";
+        if (req.file) {
+            const fileUri = getDataUri(req.file);
+            const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+            profilePhoto = cloudResponse.secure_url;
+        }
 
         const user = await User.findOne({ email })
         if (user) {
@@ -33,15 +38,28 @@ export const register = async (req, res) => {
             password: hashedPassword,
             role,
             profile:{
-                profilePhoto:cloudResponse.secure_url,
+                profilePhoto: profilePhoto || "",
             }
         });
+
+        // Send welcome email
+        try {
+            await sendWelcomeEmail(email, fullname);
+        } catch (emailError) {
+            console.error('Error sending welcome email:', emailError);
+            // Continue with registration even if email fails
+        }
+
         return res.status(200).json({
             message: "Account created successfully",
             success: true,
         })
     } catch (error) {
         console.log(error)
+        return res.status(500).json({
+            message: "Internal server error",
+            success: false
+        });
     }
 }
 export const login = async (req, res) => {
