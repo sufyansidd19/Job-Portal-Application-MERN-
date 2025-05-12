@@ -6,10 +6,11 @@ import axios from 'axios';
 import { setSingleJob } from '@/redux/jobSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'sonner';
-import { APPLICATION_API_END_POINT } from './utils/constant';
+import { APPLICATION_API_END_POINT, JOB_API_END_POINT } from './utils/constant';
 
 const JobDescription = () => {
     const { singleJob } = useSelector(store => store.job);
+    console.log(singleJob);
     const { user } = useSelector(store => store.auth);
     const isIntiallyApplied = singleJob?.applications?.some(application => application.applicant === user?._id) || false;
     const [isApplied, setIsApplied] = useState(isIntiallyApplied);
