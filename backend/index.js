@@ -25,8 +25,10 @@ app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
 const corsOption={
-    origin:'http://localhost:5173',
-    credentials:true
+    origin: ['http://localhost:5173', 'https://job-portal-application-mern-wide.vercel.app', 'https://job-portal-application-mern-production.up.railway.app'],
+    credentials:true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }
 app.use(cors(corsOption))
 
