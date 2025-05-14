@@ -27,7 +27,7 @@ app.use(cookieParser());
 const corsOption={
     origin: [
         'http://localhost:5173',
-        'https://job-portal-application-mern-wide.vercel.app',
+        'https://job-portal-application-mern-wide-of41x78mg.vercel.app',
         'https://amazed-modern-gull.ngrok-free.app'
         // 'https://amazed-modern-gull.ngrok-free.app'
         // 'https://job-portal-application-mern-production.up.railway.app'
