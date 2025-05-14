@@ -28,7 +28,7 @@ const corsOption={
     origin: [
         'http://localhost:5173',
         'https://job-portal-application-mern-wide.vercel.app',
-        'https://1d9d-202-47-53-22.ngrok-free.app'
+        'https://amazed-modern-gull.ngrok-free.app'
         // 'https://amazed-modern-gull.ngrok-free.app'
         // 'https://job-portal-application-mern-production.up.railway.app'
     ],
