@@ -1,5 +1,5 @@
 # Job Portal Application (MERN)
-
+![Job Portal](job portal.png)
 A full-stack job portal application where users can find and create jobs. Built with the MERN stack (MongoDB, Express, React, Node.js).
 
 ## Features
